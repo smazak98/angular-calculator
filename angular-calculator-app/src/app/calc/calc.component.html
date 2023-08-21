@@ -27,4 +27,14 @@
         <button>0</button>
         <button class="calculator-grid-right-bottom">=</button>
     </div>
+
+
+    <div class="history">
+        <ul class="history-list-sample" *ngFor="let sample of (historyList | slice: -20)">
+            <li>
+                {{sample.equal}} <br> 
+                {{sample.result}}
+            </li>
+        </ul>
+    </div>
 </div>
