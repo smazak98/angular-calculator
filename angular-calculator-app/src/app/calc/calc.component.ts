@@ -28,6 +28,10 @@ export class CalcComponent {
     }
   }
 
+  delChar() {
+    this.display = this.display.slice(0,-1)
+  }
+
   oper(operand: string) {
     if (this.prevValue && this.prevValue.length > 1 && this.prevValue.split(' ').at(-1) !== '=') {
       this.calculate()
@@ -99,6 +103,14 @@ export class CalcComponent {
     this.lastOper = this.operand
     this.num1 = result
     this.display = result.toString()
+
+    let binResult = (result >>> 0).toString(2)
+    while (binResult.length % 4 !== 0) {
+      binResult = '0' + binResult
+    }
+
+    this.binVal = [...(binResult)].map((d, i) => (i) % 4 == 0 ? ' ' + d : d).join('').trim()
+    this.hexVal = `${Number(result.toFixed(0)).toString(16).toLocaleUpperCase()}`
   }
 
   resetCalc() {

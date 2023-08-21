@@ -5,8 +5,15 @@
                 {{prevValue}}
             </div>
 
-            <div class="binnary-result">0011</div>
-            <div class="hex-result">1F</div>
+            <div class="binnary-result">
+                <span class="binnary-text" *ngIf="binVal !== null">BIN</span> <br>
+                {{binVal}}
+            </div>
+            
+            <div class="hex-result">
+                <span class="hex-text" *ngIf="hexVal !== null">HEX</span> <br>
+                {{hexVal}}
+            </div>
             
             <div class="current-operand">
                 {{display}}
@@ -29,13 +36,13 @@
         <button (click)="numClick(2)">2</button>
         <button (click)="numClick(3)">3</button>
         <button (click)="oper('-')">-</button>
-        <button class="calculator-grid-left-bottom">←</button>
+        <button class="calculator-grid-left-bottom" (click)="delChar()">←</button>
         <button (click)="numClick(0)">0</button>
         <button class="calculator-grid-right-bottom" (click)="calculate()">=</button>
     </div>
 
     <div class="history">
-        <ul class="history-list-sample" *ngFor="let sample of historyList">
+        <ul class="history-list-sample" *ngFor="let sample of (historyList | slice: -20)">
             <li>
                 {{sample.equal}} <br> 
                 {{sample.result}}
