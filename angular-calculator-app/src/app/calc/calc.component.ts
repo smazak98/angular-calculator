@@ -110,7 +110,7 @@ export class CalcComponent {
     }
 
     this.binVal = [...(binResult)].map((d, i) => (i) % 4 == 0 ? ' ' + d : d).join('').trim()
-    this.hexVal = `${parseInt(sample.result.toString(16).toLocaleUpperCase())}`
+    this.hexVal = `${parseInt(sample.result.toString()).toString(16).toLocaleUpperCase()}`
   }
 
   resetCalc() {
