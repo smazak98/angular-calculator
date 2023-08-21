@@ -1,40 +1,46 @@
 <div class="calculator">
     <div class="calculator-grid">
         <div class="output">
-            <div class="previos-operand">1111 +</div>
+            <div class="previos-operand">
+                {{prevValue}}
+            </div>
+
             <div class="binnary-result">0011</div>
             <div class="hex-result">1F</div>
-            <div class="current-operand">123</div>
+            
+            <div class="current-operand">
+                {{display}}
+            </div>
         </div>
 
-        <button>AC</button>
-        <button>√x</button>
-        <button>x²</button>
-        <button>/</button>
-        <button>9</button>
-        <button>8</button>
-        <button>9</button>
-        <button>*</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>+</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>-</button>
+        <button (click)="resetCalc()">AC</button>
+        <button (click)="oper('√')">√x</button>
+        <button (click)="oper('²')">x²</button>
+        <button (click)="oper('/')">/</button>
+        <button (click)="numClick(7)">7</button>
+        <button (click)="numClick(8)">8</button>
+        <button (click)="numClick(9)">9</button>
+        <button (click)="oper('*')">*</button>
+        <button (click)="numClick(4)">4</button>
+        <button (click)="numClick(5)">5</button>
+        <button (click)="numClick(6)">6</button>
+        <button (click)="oper('+')">+</button>
+        <button (click)="numClick(1)">1</button>
+        <button (click)="numClick(2)">2</button>
+        <button (click)="numClick(3)">3</button>
+        <button (click)="oper('-')">-</button>
         <button class="calculator-grid-left-bottom">←</button>
-        <button>0</button>
-        <button class="calculator-grid-right-bottom">=</button>
+        <button (click)="numClick(0)">0</button>
+        <button class="calculator-grid-right-bottom" (click)="calculate()">=</button>
     </div>
 
-
     <div class="history">
-        <ul class="history-list-sample" *ngFor="let sample of (historyList | slice: -20)">
+        <ul class="history-list-sample" *ngFor="let sample of historyList">
             <li>
                 {{sample.equal}} <br> 
                 {{sample.result}}
             </li>
         </ul>
     </div>
+
 </div>
