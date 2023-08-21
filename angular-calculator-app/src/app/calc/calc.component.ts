@@ -96,21 +96,21 @@ export class CalcComponent {
 
     sample = {
       equal: this.prevValue,
-      result: result
+      result: Number(result.toFixed(4))
     }
 
     this.historyList.push(...[sample])
     this.lastOper = this.operand
-    this.num1 = result
-    this.display = result.toString()
+    this.num1 = sample.result
+    this.display = sample.result.toString()
 
-    let binResult = (result >>> 0).toString(2)
+    let binResult = (sample.result >>> 0).toString(2)
     while (binResult.length % 4 !== 0) {
       binResult = '0' + binResult
     }
 
     this.binVal = [...(binResult)].map((d, i) => (i) % 4 == 0 ? ' ' + d : d).join('').trim()
-    this.hexVal = `${Number(result.toFixed(0)).toString(16).toLocaleUpperCase()}`
+    this.hexVal = `${parseInt(sample.result.toString(16).toLocaleUpperCase())}`
   }
 
   resetCalc() {
